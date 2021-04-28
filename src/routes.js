@@ -14,6 +14,7 @@ router.post('/login', userController.loginUser);
 router.post('/addnote/:userId', passport.authenticate('jwt', { session: false }), noteController.createNote)
 router.get('/getnote/:userId', passport.authenticate('jwt', { session: false }), noteController.getNote)
 router.delete('/deletenote/:noteId', passport.authenticate('jwt', { session: false }), noteController.oneremove)
+router.put('/updatenote/:noteId', passport.authenticate('jwt', { session: false }), noteController.update)
 router.get('/special', passport.authenticate('jwt', { session: false }), (req, res) => {
     console.log("response", res)
     console.log("req", req)

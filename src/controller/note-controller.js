@@ -51,3 +51,16 @@ exports.getNote = (req, res) => {
         res.json(result);
     });
 };
+
+exports.update = (req, res) => {
+  let note = req.note;
+  note.note = req.body.note;
+  note.save((err, result) => {
+      if (err) {
+          return res.status(400).json({
+              error: errorHandler(err)
+          });
+      }
+      res.json(result);
+  });
+};
